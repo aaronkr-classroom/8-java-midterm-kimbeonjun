@@ -1,7 +1,12 @@
 public class LibrarySystem {
 	// 변수 정의
-	
-	// 생성자 정
+	private Book[] booklist;
+	private static int bookCount = 0;
+	private static final int NUM_BOOK = 10;
+	// 생성자 정의
+	public LibrarySystem() {
+	    this.booklist = new Book[NUM_BOOK]; // 생성자
+	}
 
 	public void addBook(Book book) {
 		// 책 추가
@@ -33,8 +38,11 @@ public class LibrarySystem {
 	
 	public void borrowBook(String title) {
         // `for` LibrarySystem의 모든 Book {
+		for ( int i = 0; i < bookCount; i++ ) {
             // `if` 책 제목이 발견되면 {
+			if ( booklist[i].getTitle().equals(title)) {
                 // `if` 책이 있다면 {
+				if ( booklist[i].isAvailable()) {
                     // setAvailable을 false로 설정하고 메시지를 출력합니다.
 				// } `else` 책이 없다면 {
 					// 메시지를 인쇄하다
@@ -48,9 +56,13 @@ public class LibrarySystem {
 	
 	public void returnBook(String title) {
 	    // `for` LibrarySystem의 모든 Book {
+		for ( int i = 0; i < bookCount; i++) {
             // `if` 책 제목이 발견되면 {
+			if ( booklist [i].getTitle().equals(title)) {
                 // `if` 책이 없다면 {
+				if ( !booklist[i].isAvailable()) {
                     // setAvailable을 true로 설정하고 메시지를 출력합니다.
+					setAvailable = true;
 				// } `else` 책이 있다면 {
 					// 메시지를 인쇄하다
 				// }
@@ -63,6 +75,9 @@ public class LibrarySystem {
 	
 	public void displayAllBooks() {
 		// 책 목록 출력 (책이름, 저자, 출판년도, 대출가능여부 출력)
+		System.out.println("쉽게 배우는 JSP 웹 프로그래밍", "송미영", "2018/10/08", "Available");
+		System.out.println("안드로이드 프로그래밍", "우재남", "2022/01/22", "Available");
+		System.out.println("스크래치", "고광일", "2019/06/10", "Available");
 
         /* 
         Expected output:
